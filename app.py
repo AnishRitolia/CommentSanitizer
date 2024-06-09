@@ -4,13 +4,8 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import pandas as pd
-import pandas_datareader as data
 import streamlit as st
-import datetime as dt
-from streamlit_option_menu import option_menu
 from PIL import Image
-import json
-from streamlit_lottie import st_lottie
 
 #Changing App Name and Icon
 img = Image.open("img/icon.png")
