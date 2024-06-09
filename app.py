@@ -3,6 +3,32 @@ import pickle
 import numpy as np 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
+import pandas as pd
+import matplotlib.pyplot as plt
+import pandas_datareader as data
+import streamlit as st
+import datetime as dt
+from streamlit_option_menu import option_menu
+from PIL import Image
+import json
+from streamlit_lottie import st_lottie
+
+#Changing App Name and Icon
+img = Image.open("img/icon.png")
+st.set_page_config(page_title="CommentSanitizer",page_icon=img)
+
+#Removing header and Footer of the Web-App
+hide_menu_style = '''
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility : hidden;}
+    </style>'''
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+#Importing json animation into project from file
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
 def load_tfidf():
     tfidf = pickle.load(open("tf_idf.pkt", "rb"))
