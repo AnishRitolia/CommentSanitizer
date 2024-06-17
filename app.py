@@ -14,7 +14,7 @@ st.set_page_config(page_title="CommentSanitizer",page_icon=img)
 #Removing header and Footer of the Web-App
 hide_menu_style = '''
     <style>
-    #MainMenu {visibility: hidden;}
+    MainMenu {visibility: hidden;}
     footer {visibility : hidden;}
     </style>'''
 st.markdown(hide_menu_style, unsafe_allow_html=True)
@@ -24,6 +24,8 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
+
+#Comment sanitizer checker
 def load_tfidf():
     tfidf = pickle.load(open("tf_idf.pkt", "rb"))
     return tfidf
