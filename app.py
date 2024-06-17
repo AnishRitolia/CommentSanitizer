@@ -35,6 +35,8 @@ selected = option_menu(
         },
 )
 
+
+#page 1
 if selected == "Home":
             #Comment sanitizer checker
             def load_tfidf():
@@ -64,3 +66,21 @@ if selected == "Home":
                     result = toxicity_prediction(text_input)
                     st.subheader("Result:")
                     st.info("The result is "+ result + ".")
+
+
+#page 2
+if selected == "Project":
+            uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+
+            if uploaded_file is not None:
+                # Read the CSV file
+                df = pd.read_csv(uploaded_file)
+            
+                # Display the dataframe
+                st.write("DataFrame:")
+                st.write(df)
+            
+                # Show basic statistics
+                st.write("Basic Statistics:")
+                st.write(df.describe())
+            
