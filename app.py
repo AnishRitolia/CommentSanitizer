@@ -90,7 +90,7 @@ if selected == "Project":
                             return nb_model
             
                 # Run predictions
-                predictions = tfidf.predict(df)
+                predictions = load_model.predict(df)
             
                 # Display predictions
                 st.write("Predictions:")
