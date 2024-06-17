@@ -102,17 +102,7 @@ if selected == "Project":
                     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
                     return class_name
                             
-                # if 'text' in df.columns:
-                #     # Run predictions
-                #     df['Prediction'] = df['text'].apply(toxicity_prediction)
-            
-                #     # Display predictions
-                #     st.write("Predictions:")
-                #     st.write(df[['text', 'Prediction']])
-                # else:
-                #     st.error("CSV file must contain a 'text' column.")
-    # Check if 'text' column exists
-                    if 'text' in df.columns:
+                if 'text' in df.columns:
                                 # Run predictions
                                 df['Prediction'] = df['text'].apply(toxicity_prediction)
                         
@@ -142,7 +132,7 @@ if selected == "Project":
                                 plt.imshow(non_toxic_wordcloud, interpolation='bilinear')
                                 plt.axis('off')
                                 st.pyplot(plt)
-                    else:
+                else:
                                 st.error("CSV file must contain a 'text' column.")
                         
                                     
