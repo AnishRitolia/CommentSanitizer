@@ -12,7 +12,7 @@ from wordcloud import WordCloud
 
 # Changing App Name and Icon
 img = Image.open("img/icon.png")
-st.set_page_config(page_title="CommentSanitizer", page_icon=img)
+st.set_page_config(page_title="CommentSanitizer", page_icon=img, layout="wide")
 
 # Removing header and Footer of the Web-App
 hide_st_style = """
@@ -22,16 +22,17 @@ hide_st_style = """
             header {visibility: hidden;}
             </style>
             """
-
 # Inject the CSS code
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-# Define the functions to load the tfidf vectorizer and the model
+# Load the tfidf vectorizer and the model
+@st.cache_resource
 def load_tfidf():
     with open('tf_idf.pkt', 'rb') as f:
         tfidf = pickle.load(f)
     return tfidf
 
+@st.cache_resource
 def load_model():
     with open('toxicity_model.pkt', 'rb') as f:
         nb_model = pickle.load(f)
@@ -49,8 +50,8 @@ def toxicity_prediction(text):
 # Option menu
 selected = option_menu(
     menu_title=None,
-    options=["Home", "Project", "FAQ", "Contact"],
-    icons=["house", "book", "question-circle", "envelope"],
+    options=["Home", "Input Comment", "CSV File", "FAQ"],
+    icons=["house", "keyboard", "file-text", "question-circle"],
     default_index=0,
     orientation="horizontal",
     styles={
@@ -59,20 +60,42 @@ selected = option_menu(
     },
 )
 
-# Page 1: Home
+# Home Section
 if selected == "Home":
-    st.header("Toxicity Detection App")
-    st.subheader("Input your text")
-    text_input = st.text_input("Enter your text")
+    st.title("CommentSanitizer")
+    st.header("Welcome to CommentSanitizer!")
+    st.subheader("Project Overview")
+    st.write("""
+    CommentSanitizer is a project developed by Aastha Mahato and Anish Ritolia. It aims to detect and classify toxic comments using 
+    machine learning techniques. This tool provides users with the ability to input individual comments for analysis or upload CSV files 
+    containing multiple comments for batch processing. Additionally, the tool offers insightful visualizations, including class distributions 
+    and word clouds, to help understand the nature of the comments being analyzed.
+    
+    **Key Features:**
+    - Analyze individual comments for toxicity.
+    - Batch process multiple comments from a CSV file.
+    - Visualize the distribution of toxic and non-toxic comments.
+    - Generate word clouds for toxic and non-toxic comments.
+    
+    Navigate through the sections using the menu above to explore the different functionalities of CommentSanitizer.
+    """)
+
+# Input Comment Section
+if selected == "Input Comment":
+    st.header("Input Comment for Toxicity Analysis")
+    st.subheader("Enter your text below:")
+    text_input = st.text_area("Enter your text", height=150)
 
     if text_input:
-        if st.button("Analyse"):
+        if st.button("Analyze"):
             result = toxicity_prediction(text_input)
             st.subheader("Result:")
             st.info(f"The result is {result}.")
 
-# Page 2: Project
-if selected == "Project":
+# CSV File Section
+if selected == "CSV File":
+    st.header("Upload CSV File for Batch Comment Analysis")
+    st.subheader("Upload a CSV file containing comments:")
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
     if uploaded_file is not None:
@@ -129,3 +152,32 @@ if selected == "Project":
             st.pyplot(plt)
         else:
             st.error("CSV file must contain a 'text' column.")
+
+# FAQ Section
+if selected == "FAQ":
+    st.header("Frequently Asked Questions")
+    
+    faq_content = """
+    ### What is CommentSanitizer?
+    CommentSanitizer is a tool designed to detect and classify toxic comments using machine learning techniques. It allows users to analyze individual comments or batch process multiple comments from a CSV file.
+
+    ### How does CommentSanitizer work?
+    CommentSanitizer uses a pre-trained machine learning model to analyze the text of comments and classify them as either "Toxic" or "Non-Toxic." The model is based on a TfidfVectorizer for text feature extraction and a Multinomial Naive Bayes classifier for prediction.
+
+    ### What kind of comments can be analyzed?
+    Any text-based comments can be analyzed, including those from social media, forums, or any other platforms where user-generated content is present.
+
+    ### How can I upload a CSV file for batch processing?
+    Navigate to the "CSV File" section, and upload a CSV file containing a column named "text" which includes the comments you want to analyze.
+
+    ### Who developed CommentSanitizer?
+    CommentSanitizer was developed by Aastha Mahato and Anish Ritolia as part of their final year project.
+
+    ### Can I visualize the results?
+    Yes, CommentSanitizer provides various visualizations, including class distribution charts, comment length histograms, and word clouds for toxic and non-toxic comments.
+
+    ### How can I get in touch for further questions?
+    You can contact us via email at: [email@example.com]
+
+    """
+    st.markdown(faq_content)
