@@ -82,14 +82,24 @@ if selected == "Project":
             
                 # Load the model
                 def load_tfidf():
-                            tfidf = pickle.load(open("tf_idf.pkt", "rb"))
-                            return tfidf
+                        tfidf = pickle.load(open("tf_idf.pkt", "rb"))
+                        return tfidf
             
-                nb_model = pickle.load(open("toxicity_model.pkt", "rb"))
+                def load_model():
+                        nb_model = pickle.load(open("toxicity_model.pkt", "rb"))
+                        return nb_model
                             
             
                 # Run predictions
-                predictions = nb_model.predict(df)
+                def toxicity_prediction(text):
+                    tfidf = load_tfidf()
+                    text_tfidf = tfidf.transform([text]).toarray()
+                    nb_model = load_model()
+                    prediction = nb_model.predict(text_tfidf)
+                    class_name = "Toxic" if prediction == 1 else "Non-Toxic"
+                    return class_name
+                            
+                predictions = toxicity_prediction(df)
             
                 # Display predictions
                 st.write("Predictions:")
