@@ -22,10 +22,6 @@ hide_st_style = """
 
 # Inject the CSS code
 st.markdown(hide_st_style, unsafe_allow_html=True)
-#Importing json animation into project from file
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
-        return json.load(f)
 
 
 #Comment sanitizer checker
