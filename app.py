@@ -84,34 +84,11 @@ if selected == "Project":
         st.write(df)
 
         if 'text' in df.columns:
-            # Run predictions
-            df['Prediction'] = df['text'].apply(toxicity_prediction)
+        # Run predictions
+        df['Prediction'] = df['text'].apply(toxicity_prediction)
 
-            # Display predictions
-            st.write("Predictions:")
-            st.write(df[['text', 'Prediction']])
-            
-            # Display the count of each class
-            st.write("Class Distribution:")
-            class_distribution = df['Prediction'].value_counts()
-            st.bar_chart(class_distribution)
-
-            # Word Cloud for Toxic and Non-Toxic comments
-            toxic_comments = " ".join(df[df['Prediction'] == "Toxic"]['text'])
-            non_toxic_comments = " ".join(df[df['Prediction'] == "Non-Toxic"]['text'])
-
-            st.write("Word Cloud for Toxic Comments")
-            toxic_wordcloud = WordCloud(width=800, height=400, background_color='black', colormap='Reds').generate(toxic_comments)
-            plt.figure(figsize=(10, 5))
-            plt.imshow(toxic_wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
-
-            st.write("Word Cloud for Non-Toxic Comments")
-            non_toxic_wordcloud = WordCloud(width=800, height=400, background_color='white', colormap='Blues').generate(non_toxic_comments)
-            plt.figure(figsize=(10, 5))
-            plt.imshow(non_toxic_wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
-        else:
-            st.error("CSV file must contain a 'text' column.")
+        # Display predictions
+        st.write("Predictions:")
+        st.write(df[['text', 'Prediction']])
+    else:
+        st.error("CSV file must contain a 'text' column.")
