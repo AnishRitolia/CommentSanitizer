@@ -4,3 +4,7 @@ uvicorn
 numpy
 streamlit
 streamlit-option-menu
+matplotlib
+matplotlib.pyplot
+seaborn
+wordcloud
