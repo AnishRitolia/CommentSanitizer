@@ -80,7 +80,19 @@ if selected == "Project":
                 st.write("DataFrame:")
                 st.write(df)
             
-                # Show basic statistics
-                st.write("Basic Statistics:")
-                st.write(df.describe())
+                # Load the model
+                def load_tfidf():
+                            tfidf = pickle.load(open("tf_idf.pkt", "rb"))
+                            return tfidf
+            
+                def load_model():
+                            nb_model = pickle.load(open("toxicity_model.pkt", "rb"))
+                            return nb_model
+            
+                # Run predictions
+                predictions = tfidf.predict(df)
+            
+                # Display predictions
+                st.write("Predictions:")
+                st.write(predictions)
             
