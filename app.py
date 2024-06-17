@@ -12,13 +12,16 @@ img = Image.open("img/icon.png")
 st.set_page_config(page_title="CommentSanitizer",page_icon=img)
 
 #Removing header and Footer of the Web-App
-hide_menu_style = '''
-    <style>
-    MainMenu {visibility: hidden;}
-    footer {visibility : hidden;}
-    </style>'''
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
 
+# Inject the CSS code
+st.markdown(hide_st_style, unsafe_allow_html=True)
 #Importing json animation into project from file
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
