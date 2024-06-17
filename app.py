@@ -6,6 +6,9 @@ from sklearn.naive_bayes import MultinomialNB
 import pandas as pd
 from PIL import Image
 from streamlit_option_menu import option_menu
+import matplotlib.pyplot as plt
+import seaborn as sns
+from wordcloud import WordCloud
 
 #Changing App Name and Icon
 img = Image.open("img/icon.png")
