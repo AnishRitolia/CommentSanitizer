@@ -55,8 +55,8 @@ def toxicity_prediction(text):
 # Option menu
 selected = option_menu(
     menu_title="Comment Sanitizer – Purifying Comments for Safer Web",
-    options=["Home", "Input Comment", "CSV File", "FAQ"],
-    icons=["house", "keyboard", "file-text", "question-circle"],
+    options=["Home", "Input Comment", "CSV File", "FAQ", "Contact"],
+    icons=["house", "keyboard", "file-text", "question-circle", "envelope"],
     default_index=0,
     orientation="horizontal",
     styles={
@@ -93,15 +93,11 @@ if selected == "Input Comment":
     st.subheader("Enter your text below:")
     text_input = st.text_area("Enter your text", height=150)
 
-    if text_input:
-        result = toxicity_prediction(text_input)
-        st.subheader("Result:")
-        st.info(f"The result is {result}.")
-    
     if st.button("Sanitize Comment"):
-        result = toxicity_prediction(text_input)
-        st.subheader("Result:")
-        st.info(f"The result is {result}.")
+        if text_input:
+            result = toxicity_prediction(text_input)
+            st.subheader("Result:")
+            st.info(f"The result is {result}.")
 
 # CSV File Section
 if selected == "CSV File":
@@ -128,39 +124,47 @@ if selected == "CSV File":
             # Display the count of each class
             st.write("Class Distribution:")
             class_distribution = df['Prediction'].value_counts()
-            st.bar_chart(class_distribution)
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.bar_chart(class_distribution)
 
-            # Pie Chart for Class Distribution
-            st.write("Class Distribution (Pie Chart):")
-            fig1, ax1 = plt.subplots()
-            ax1.pie(class_distribution, labels=class_distribution.index, autopct='%1.1f%%', startangle=90)
-            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-            st.pyplot(fig1)
-
-            # Histogram of Comment Lengths
-            st.write("Histogram of Comment Lengths:")
-            df['text_length'] = df['text'].apply(len)
-            fig2, ax2 = plt.subplots()
-            sns.histplot(data=df, x='text_length', hue='Prediction', multiple='stack', ax=ax2, bins=30)
-            st.pyplot(fig2)
-
-            # Word Cloud for Harmful and Safe comments
-            harmful_comments = " ".join(df[df['Prediction'] == "Harmful"]['text'])
-            safe_comments = " ".join(df[df['Prediction'] == "Safe"]['text'])
-
-            st.write("Word Cloud for Harmful Comments")
-            harmful_wordcloud = WordCloud(width=800, height=400, background_color='black', colormap='Reds').generate(harmful_comments)
-            plt.figure(figsize=(10, 5))
-            plt.imshow(harmful_wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
-
-            st.write("Word Cloud for Safe Comments")
-            safe_wordcloud = WordCloud(width=800, height=400, background_color='white', colormap='Blues').generate(safe_comments)
-            plt.figure(figsize=(10, 5))
-            plt.imshow(safe_wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
+            with col2:
+                # Pie Chart for Class Distribution
+                fig1, ax1 = plt.subplots(figsize=(5, 5))
+                ax1.pie(class_distribution, labels=class_distribution.index, autopct='%1.1f%%', startangle=90)
+                ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                st.pyplot(fig1)
+            
+            # Align histograms and word clouds side by side
+            col3, col4 = st.columns(2)
+            
+            with col3:
+                # Histogram of Comment Lengths
+                st.write("Histogram of Comment Lengths:")
+                df['text_length'] = df['text'].apply(len)
+                fig2, ax2 = plt.subplots(figsize=(5, 5))
+                sns.histplot(data=df, x='text_length', hue='Prediction', multiple='stack', ax=ax2, bins=30)
+                st.pyplot(fig2)
+            
+            with col4:
+                # Word Cloud for Harmful and Safe comments
+                st.write("Word Cloud for Harmful Comments")
+                harmful_comments = " ".join(df[df['Prediction'] == "Harmful"]['text'])
+                harmful_wordcloud = WordCloud(width=400, height=200, background_color='black', colormap='Reds').generate(harmful_comments)
+                plt.figure(figsize=(5, 5))
+                plt.imshow(harmful_wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(plt)
+                
+                st.write("Word Cloud for Safe Comments")
+                safe_comments = " ".join(df[df['Prediction'] == "Safe"]['text'])
+                safe_wordcloud = WordCloud(width=400, height=200, background_color='white', colormap='Blues').generate(safe_comments)
+                plt.figure(figsize=(5, 5))
+                plt.imshow(safe_wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(plt)
         else:
             st.error("CSV file must contain a 'text' column.")
 
@@ -188,7 +192,14 @@ if selected == "FAQ":
     Yes, Comment Sanitizer provides various visualizations, including class distribution charts, comment length histograms, and word clouds for harmful and safe comments.
 
     ### How can I get in touch for further questions?
-    You can contact us via email at: [email@example.com]
-
+    You can contact us via email at: aasthanikku2001@gmail.com and anishritolia6@gmail.com
     """
     st.markdown(faq_content)
+
+# Contact Section
+if selected == "Contact":
+    st.header("Contact Us")
+    st.write("For any further questions or inquiries, please reach out to us at:")
+    st.write("**Aastha Mahato**: aasthanikku2001@gmail.com")
+    st.write("**Anish Ritolia**: anishritolia6@gmail.com")
+
