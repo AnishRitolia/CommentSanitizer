@@ -109,7 +109,5 @@ if selected == "Project":
                 else:
                     st.error("CSV file must contain a 'text' column.")
             
-                # Display predictions
-                st.write("Predictions:")
-                st.write(predictions)
+                
             
