@@ -96,6 +96,20 @@ if selected == "Project":
             class_distribution = df['Prediction'].value_counts()
             st.bar_chart(class_distribution)
 
+            # Pie Chart for Class Distribution
+            st.write("Class Distribution (Pie Chart):")
+            fig1, ax1 = plt.subplots()
+            ax1.pie(class_distribution, labels=class_distribution.index, autopct='%1.1f%%', startangle=90)
+            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            st.pyplot(fig1)
+
+            # Histogram of Comment Lengths
+            st.write("Histogram of Comment Lengths:")
+            df['text_length'] = df['text'].apply(len)
+            fig2, ax2 = plt.subplots()
+            sns.histplot(data=df, x='text_length', hue='Prediction', multiple='stack', ax=ax2, bins=30)
+            st.pyplot(fig2)
+
             # Word Cloud for Toxic and Non-Toxic comments
             toxic_comments = " ".join(df[df['Prediction'] == "Toxic"]['text'])
             non_toxic_comments = " ".join(df[df['Prediction'] == "Non-Toxic"]['text'])
