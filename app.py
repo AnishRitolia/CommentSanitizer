@@ -4,8 +4,8 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import pandas as pd
-import streamlit as st
 from PIL import Image
+from streamlit_option_menu import option_menu
 
 #Changing App Name and Icon
 img = Image.open("img/icon.png")
