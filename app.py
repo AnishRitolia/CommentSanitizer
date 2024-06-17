@@ -99,7 +99,15 @@ if selected == "Project":
                     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
                     return class_name
                             
-                predictions = toxicity_prediction(df)
+                if 'text' in df.columns:
+                    # Run predictions
+                    df['Prediction'] = df['text'].apply(toxicity_prediction)
+            
+                    # Display predictions
+                    st.write("Predictions:")
+                    st.write(df[['text', 'Prediction']])
+                else:
+                    st.error("CSV file must contain a 'text' column.")
             
                 # Display predictions
                 st.write("Predictions:")
