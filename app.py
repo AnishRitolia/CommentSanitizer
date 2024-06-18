@@ -200,6 +200,8 @@ if selected == "FAQ":
 if selected == "Contact":
     st.header("Contact Us")
     st.write("For any further questions or inquiries, please reach out to us at:")
-    st.write("**Aastha Mahato**: aasthanikku2001@gmail.com")
-    st.write("**Anish Ritolia**: anishritolia6@gmail.com")
+    st.write("**Aastha Mahato**: [aasthanikku2001@gmail.com](mailto:aasthanikku2001@gmail.com)")
+    st.write("**Anish Ritolia**: [anishritolia6@gmail.com](mailto:anishritolia6@gmail.com)")
+
+    st.write("We look forward to hearing from you!")
 
