@@ -94,6 +94,20 @@ if selected == "Home":
     Navigate through the sections using the menu above to explore the different functionalities of Comment Sanitizer.
     """)
 
+    lottie_coading = load_lottiefile("app-lottie/home.json")
+    st_lottie(
+        lottie_coading,
+        speed = 1,
+        reverse = False,
+        loop=True,
+        quality="high",
+        height = "300px",
+        width = "100%",
+        key = None,
+    )
+
+    
+
 # Input Comment Section
 if selected == "Input Comment":
     st.header("Input Comment for Analysis")
