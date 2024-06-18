@@ -9,6 +9,7 @@ from streamlit_option_menu import option_menu
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
+from streamlit_lottie import st_lottie
 
 # Changing App Name and Icon
 img = Image.open("img/icon.png")
@@ -204,4 +205,16 @@ if selected == "Contact":
     st.write("**Anish Ritolia**: [anishritolia6@gmail.com](mailto:anishritolia6@gmail.com)")
 
     st.write("We look forward to hearing from you!")
+            
+    lottie_coading = load_lottiefile("app-lottie/contact.json")
+    st_lottie(
+        lottie_coading,
+        speed=0.9,
+        reverse=False,
+        loop=True,
+        quality="high",
+        height="150px",
+        width="100%",
+        key=None,
+    )
 
