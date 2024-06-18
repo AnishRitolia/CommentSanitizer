@@ -206,7 +206,7 @@ if selected == "Contact":
 
     st.write("We look forward to hearing from you!")
             
-    lottie_coading = load_lottiefile("app-lottie/contact.json")
+    lottie_coading = load_lottiefile("img/contact.json")
     st_lottie(
         lottie_coading,
         speed=0.9,
