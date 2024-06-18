@@ -4,3 +4,4 @@ uvicorn
 numpy
 streamlit
 streamlit-option-menu
+streamlit-lottie
