@@ -195,7 +195,7 @@ if selected == "FAQ":
 
     ottie_coading = load_lottiefile("img/faq.json")
     st_lottie(
-        # lottie_coading,
+        lottie_coading,
         speed=0.9,
         reverse=False,
         loop=True,
