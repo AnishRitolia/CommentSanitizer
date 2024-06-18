@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
 from streamlit_lottie import st_lottie
+import json
 
 # Changing App Name and Icon
 img = Image.open("img/icon.png")
@@ -30,6 +31,11 @@ hide_st_style = """
             """
 # Inject the CSS code
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+#Importing json animation into project from file
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
 # Load the tfidf vectorizer and the model
 @st.cache_resource
