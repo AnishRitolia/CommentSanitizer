@@ -193,17 +193,17 @@ if selected == "CSV File":
 if selected == "FAQ":
     st.header("Frequently Asked Questions")
 
-    ottie_coading = load_lottiefile("img/faq.json")
-    st_lottie(
-        lottie_coading,
-        speed=0.9,
-        reverse=False,
-        loop=True,
-        quality="high",
-        height="300px",
-        width="100%",
-        key=None,
-    )
+    # ottie_coading = load_lottiefile("img/faq.json")
+    # st_lottie(
+    #     lottie_coading,
+    #     speed=0.9,
+    #     reverse=False,
+    #     loop=True,
+    #     quality="high",
+    #     height="300px",
+    #     width="100%",
+    #     key=None,
+    # )
     
     faq_content = """
     ### What is Comment Sanitizer?
