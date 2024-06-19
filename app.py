@@ -393,7 +393,7 @@ if selected == "Input Comment":
             col1, col2 = st.columns([2, 1])
             with col1:
                 if result == "Safe":
-                    lottie_safe = load_lottiefile("img/safe.json")
+                    lottie_safe = load_lottiefile("img/Safe.json")
                     st_lottie(
                         lottie_safe,
                         speed=1,
@@ -405,7 +405,7 @@ if selected == "Input Comment":
                         key=None,
                     )
                 else:
-                    lottie_harmful = load_lottiefile("img/harmful.json")
+                    lottie_harmful = load_lottiefile("img/Harmful.json")
                     st_lottie(
                         lottie_harmful,
                         speed=1,
