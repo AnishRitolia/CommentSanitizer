@@ -198,7 +198,7 @@ if selected == "FAQ":
         reverse=False,
         loop=True,
         quality="high",
-        height="400px",
+        height="300px",
         width="100%",
         key=None,
     )
