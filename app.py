@@ -191,6 +191,17 @@ if selected == "CSV File":
 
 # FAQ Section
 if selected == "FAQ":
+    lottie_coading = load_lottiefile("img/FAQ.json")
+    st_lottie(
+        lottie_coading,
+        speed=0.9,
+        reverse=False,
+        loop=True,
+        quality="high",
+        height="400px",
+        width="100%",
+        key=None,
+    )
     st.header("Frequently Asked Questions")
 
     # ottie_coading = load_lottiefile("img/faq.json")
@@ -229,17 +240,7 @@ if selected == "FAQ":
     """
     st.markdown(faq_content)
 
-    lottie_coading = load_lottiefile("img/FAQ.json")
-    st_lottie(
-        lottie_coading,
-        speed=0.9,
-        reverse=False,
-        loop=True,
-        quality="high",
-        height="250px",
-        width="100%",
-        key=None,
-    )
+    
 
 # Contact Section
 if selected == "Contact":
