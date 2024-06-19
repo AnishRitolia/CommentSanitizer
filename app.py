@@ -386,12 +386,16 @@ if selected == "Input Comment":
 
     if st.button("Sanitize Comment"):
         if text_input:
-            result = toxicity_prediction(text_input)
-            st.subheader("Result:")
-            st.info(f"The result is {result}.")
+            
 
             col1, col2 = st.columns([2, 1])
             with col1:
+                result = toxicity_prediction(text_input)
+                st.subheader("Result:")
+                st.info(f"The result is {result}.")
+
+            
+            with col2:
                 if result == "Safe":
                     lottie_safe = load_lottiefile("img/Safe.json")
                     st_lottie(
