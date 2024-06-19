@@ -344,25 +344,28 @@ selected = option_menu(
 # Home Section
 if selected == "Home":
     st.title("Comment Sanitizer – Purifying Comments for Safer Web")
-    st.header("Welcome to Comment Sanitizer!")
-    st.subheader("Project Overview")
-    st.write("""
-    Comment Sanitizer is a project developed by Aastha Mahato and Anish Ritolia. It aims to detect and classify harmful comments using 
-    machine learning techniques. This tool provides users with the ability to input individual comments for analysis or upload CSV files 
-    containing multiple comments for batch processing. Additionally, the tool offers insightful visualizations, including class distributions 
-    and word clouds, to help understand the nature of the comments being analyzed.
-    
-    **Key Features:**
-    - Analyze individual comments for harmful content.
-    - Batch process multiple comments from a CSV file.
-    - Visualize the distribution of harmful and safe comments.
-    - Generate word clouds for harmful and safe comments.
-    
-    Navigate through the sections using the menu above to explore the different functionalities of Comment Sanitizer.
-    """)
 
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns([3, 2])
+
     with col1:
+        st.header("Welcome to Comment Sanitizer!")
+        st.subheader("Project Overview")
+        st.write("""
+        Comment Sanitizer is a project developed by Aastha Mahato and Anish Ritolia. It aims to detect and classify harmful comments using 
+        machine learning techniques. This tool provides users with the ability to input individual comments for analysis or upload CSV files 
+        containing multiple comments for batch processing. Additionally, the tool offers insightful visualizations, including class distributions 
+        and word clouds, to help understand the nature of the comments being analyzed.
+        
+        **Key Features:**
+        - Analyze individual comments for harmful content.
+        - Batch process multiple comments from a CSV file.
+        - Visualize the distribution of harmful and safe comments.
+        - Generate word clouds for harmful and safe comments.
+        
+        Navigate through the sections using the menu above to explore the different functionalities of Comment Sanitizer.
+        """)
+
+    with col2:
         lottie_home = load_lottiefile("img/home.json")
         st_lottie(
             lottie_home,
@@ -493,7 +496,7 @@ if selected == "FAQ":
         Comment Sanitizer is a tool designed to detect and classify harmful comments using machine learning techniques. It allows users to analyze individual comments or batch process multiple comments from a CSV file.
 
         ### How does Comment Sanitizer work?
-                Comment Sanitizer uses a pre-trained machine learning model to analyze the text of comments and classify them as either "Harmful" or "Safe." The model is based on a TfidfVectorizer for text feature extraction and a Multinomial Naive Bayes classifier for prediction.
+        Comment Sanitizer uses a pre-trained machine learning model to analyze the text of comments and classify them as either "Harmful" or "Safe." The model is based on a TfidfVectorizer for text feature extraction and a Multinomial Naive Bayes classifier for prediction.
 
         ### What kind of comments can be analyzed?
         Any text-based comments can be analyzed, including those from social media, forums, or any other platforms where user-generated content is present.
