@@ -245,7 +245,7 @@ if selected == "Contact":
         reverse=False,
         loop=True,
         quality="high",
-        height="150px",
+        height="250px",
         width="100%",
         key=None,
     )
