@@ -25,7 +25,7 @@ Comment Sanitizer is a web application designed to detect and classify harmful c
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/comment-sanitizer.git
+   git clone https://github.com/AnishRitolia/CommentSanitizer.git
    cd comment-sanitizer
    ```
 
@@ -42,6 +42,10 @@ Comment Sanitizer is a web application designed to detect and classify harmful c
    ```
 
 4. Access the application at [http://localhost:8501](http://localhost:8501) in your web browser.
+
+## Live Application
+
+Access the application at [https://commentsanitizer.streamlit.app/](https://commentsanitizer.streamlit.app/)
 
 ## Usage
 
