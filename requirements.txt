@@ -5,3 +5,4 @@ numpy
 streamlit
 streamlit-option-menu
 streamlit-lottie
+matplotlib
