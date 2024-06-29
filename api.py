@@ -1,3 +1,13 @@
+# Authors: Anish Ritolia and Aastha Mahato.
+# Date: 21-06-2024
+# Description: Final Year Project for B.Tech in CSE.
+#              Joint effort by Anish Ritolia and Aastha Mahato.
+# Guided by: Professor Joydeb Sarker
+# LinkedIn:
+#   - https://www.linkedin.com/in/anishritolia/
+#   - https://www.linkedin.com/in/aasthamahato/
+#-----------------------------------------------------------
+
 from fastapi import FastAPI
 import pickle 
 import numpy as np 
